@@ -1,0 +1,25 @@
+﻿<Window x:Class="IndeeMusee.FormIntro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+        xmlns:local="clr-namespace:IndeeMusee"
+        mc:Ignorable="d"
+        Title="ChooseMusicFolderForm"
+        Height="450"
+        Width="800"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/music back.png" />
+        </Grid.Background>
+        <Image gif:AnimationBehavior.SourceUri="/Assets/ezgif.com-gif-maker.gif"
+               x:Name="animate_disk_image"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"></Image>
+    </Grid>
+</Window>

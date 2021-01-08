@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="IndeeMusee.Views.PersonalSideBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IndeeMusee.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="350">
+    <!--#region Định dạng Button kèm triggers-->
+
+    <!--#endregion-->
+    <!--#region Personal Views-->
+
+    <Grid MouseEnter="Grid_MouseEnter"
+          Opacity="0.5"
+          x:Name="MainGrid"
+          MouseLeave="MainGrid_MouseLeave"
+          >
+        <Grid.Background>
+            <SolidColorBrush Color="White" Opacity="0.3">
+                
+            </SolidColorBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--#region Chỉnh chia Grid và add Label, ảnh cho button-->
+        <!--#region Button HOME-->
+            <Button Style="{StaticResource Button_Frame_Playlist}"
+                                    Width="330"
+                Height="50"
+                Command="{Binding HomeCommand}"
+                    >
+            <Grid Width="330" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/IndeeMusee;component/Assets/HOME.png"
+                  Height="30"
+                  Width="30"/>
+                <Label VerticalContentAlignment="Center"
+                       Padding="0,0,0,0"
+                       Content="HOME"
+                       Width="auto"
+                       FontSize="36"
+                       Foreground="#FCF8F8"
+                       Grid.Column="1" />
+            </Grid>
+            </Button>
+        <!--#endregion-->
+        <!--#region Button MY MUSIC-->
+        <Button Grid.Row="1"
+                Width="330"
+                Height="50"
+                Style="{StaticResource Button_Frame_Playlist}"
+                Command="{Binding MyMusicCommand}"
+                >
+            <Grid Width="330" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/IndeeMusee;component/Assets/my music.png"
+                   Height="29"
+                   Width="25"/>
+                <Label Padding="0,0,0,0"
+                       Content="MY MUSIC" 
+                       FontSize="36"
+                       Foreground="#FCF8F8"
+                       Grid.Column="1"/>
+            </Grid>
+        </Button>
+        <!--#endregion-->
+        <!--#region Button FAVORITE SONGS-->
+        <Button Grid.Row="2"
+                Style="{StaticResource Button_Frame_Playlist}"
+                                Width="330"
+                Height="50"
+                Command="{Binding FavoriteSongCommand}"
+                
+                >
+            <Grid Width="330" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/IndeeMusee;component/Assets/heart.png"
+                   Height="29"
+                   Width="31"/>
+                <Label Padding="0,0,0,0"
+                       Content="FAVORITE SONGS" 
+                       FontSize="36"
+                       Foreground="#FCF8F8"
+                       Grid.Column="1"/>
+            </Grid>
+        </Button>
+        <!--#endregion-->
+        <!--#endregion-->
+    </Grid>
+    <!--#endregion-->
+</UserControl>

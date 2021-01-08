@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1FB6E57-24E6-4042-80B9-F95B890F7DE0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>IndeeMusee</RootNamespace>
+    <AssemblyName>IndeeMusee</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bass.Net, Version=2.4.10.3, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Bass.Net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Leaf.xNet, Version=5.2.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Leaf.xNet.5.2.10\lib\net45\Leaf.xNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.113.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.113.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TagLibSharp, Version=2.2.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\TagLibSharp.2.2.0\lib\net45\TagLibSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="XamlAnimatedGif, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XamlAnimatedGif.1.2.3\lib\net45\XamlAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ChooseMusicFolderForm.xaml.cs">
+      <DependentUpon>ChooseMusicFolderForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreatePlaylistForm.xaml.cs">
+      <DependentUpon>CreatePlaylistForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\DataProvider\BaseDataProvider.cs" />
+    <Compile Include="DataManager\DataProvider\SongDataAccess.cs" />
+    <Compile Include="DataManager\GeneralDataManagement.cs" />
+    <Compile Include="DataManager\SongListData.cs" />
+    <Compile Include="DataManager\UpNextListData.cs" />
+    <Compile Include="EditLyric.xaml.cs">
+      <DependentUpon>EditLyric.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm.xaml.cs">
+      <DependentUpon>EditForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormIntro.xaml.cs">
+      <DependentUpon>FormIntro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GoodNightForm.xaml.cs">
+      <DependentUpon>GoodNightForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListMusicDialog.xaml.cs">
+      <DependentUpon>ListMusicDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Analyzer.cs" />
+    <Compile Include="Models\CSong.cs" />
+    <Compile Include="Models\DelegateDefine.cs" />
+    <Compile Include="Models\LyricModel.cs" />
+    <Compile Include="Models\MusicInPlaylistControl.cs" />
+    <Compile Include="Models\MyMusicControl.cs" />
+    <Compile Include="Models\NowPlayingSong.cs" />
+    <Compile Include="Models\PlaylistModel.cs" />
+    <Compile Include="Models\SleepingModeManager.cs" />
+    <Compile Include="Models\SongListModel.cs" />
+    <Compile Include="Models\SongModel.cs" />
+    <Compile Include="Models\UpNextListModel.cs" />
+    <Compile Include="MyUtilites\MyFunction.cs" />
+    <Compile Include="SleepTimerForm.xaml.cs">
+      <DependentUpon>SleepTimerForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AddPlaylistFormViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BasicControlTaskBarViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\ExploreMusicViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\KaraokeViewModel.cs" />
+    <Compile Include="ViewModels\ListMusicDialogViewModel.cs" />
+    <Compile Include="ViewModels\ListMusicInPlaylistViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\LyricEditorVersion2ViewModel.cs" />
+    <Compile Include="ViewModels\LyricEditorViewModel.cs" />
+    <Compile Include="ViewModels\LyricViewModel.cs" />
+    <Compile Include="ViewModels\MyMusicViewModel.cs" />
+    <Compile Include="ViewModels\NowPlayingViewModel.cs" />
+    <Compile Include="ViewModels\PlaylistBarViewModel.cs" />
+    <Compile Include="ViewModels\PlaylistInfoViewModel.cs" />
+    <Compile Include="ViewModels\PlaylistViewModel.cs" />
+    <Compile Include="ViewModels\SidebarViewModel.cs" />
+    <Compile Include="Views\AddPlayListForm.xaml.cs">
+      <DependentUpon>AddPlayListForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ButtonAddPlaylist.xaml.cs">
+      <DependentUpon>ButtonAddPlaylist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreatePlayList.xaml.cs">
+      <DependentUpon>CreatePlayList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditPlayListNameForm.xaml.cs">
+      <DependentUpon>EditPlayListNameForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExploreView.xaml.cs">
+      <DependentUpon>ExploreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HeaderBar.xaml.cs">
+      <DependentUpon>HeaderBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KaraokeView.xaml.cs">
+      <DependentUpon>KaraokeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListMusicInPlaylist.xaml.cs">
+      <DependentUpon>ListMusicInPlaylist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LyricEditorVersion2.xaml.cs">
+      <DependentUpon>LyricEditorVersion2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LyricEditorView.xaml.cs">
+      <DependentUpon>LyricEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LyricEditor_FormAddLyric.xaml.cs">
+      <DependentUpon>LyricEditor_FormAddLyric.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LyricsView.xaml.cs">
+      <DependentUpon>LyricsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MiniTool.xaml.cs">
+      <DependentUpon>MiniTool.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyMusicView.xaml.cs">
+      <DependentUpon>MyMusicView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowPlayingView.xaml.cs">
+      <DependentUpon>NowPlayingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BasicControlTaskbar.xaml.cs">
+      <DependentUpon>BasicControlTaskbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonalSideBar.xaml.cs">
+      <DependentUpon>PersonalSideBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayListBarView.xaml.cs">
+      <DependentUpon>PlayListBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayListInfoView.xaml.cs">
+      <DependentUpon>PlayListInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayListInfoViews.xaml.cs">
+      <DependentUpon>PlayListInfoViews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlaylistView.xaml.cs">
+      <DependentUpon>PlaylistView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlaylistCard.xaml.cs">
+      <DependentUpon>PlaylistCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spectrum.xaml.cs">
+      <DependentUpon>Spectrum.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimePickComponent.xaml.cs">
+      <DependentUpon>TimePickComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UtilitiesControl.xaml.cs">
+      <DependentUpon>UtilitiesControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ChooseMusicFolderForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreatePlaylistForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditLyric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormIntro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GoodNightForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListMusicDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ProjectResources\MainResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SleepTimerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CustomScrollbarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddPlayListForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ButtonAddPlaylist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreatePlayList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditPlayListNameForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExploreView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HeaderBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KaraokeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListMusicInPlaylist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LyricEditorVersion2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LyricEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LyricEditor_FormAddLyric.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LyricsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MiniTool.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyMusicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowPlayingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BasicControlTaskbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonalSideBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayListBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayListInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlayListInfoViews.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlaylistView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlaylistCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Spectrum.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TimePickComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UtilitiesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Note.md" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ADD.png" />
+    <Resource Include="Assets\btnPlay.png" />
+    <Resource Include="Assets\Chỉnh âm lượng+ thời gian.png" />
+    <Resource Include="Assets\headphones.png" />
+    <Resource Include="Assets\heart.png" />
+    <Resource Include="Assets\HOME.png" />
+    <Resource Include="Assets\Lap lại 1 bài.png" />
+    <Resource Include="Assets\LoaLon.png" />
+    <Resource Include="Assets\Loa nhỏ.png" />
+    <Resource Include="Assets\Lặp lại.png" />
+    <Resource Include="Assets\my music.png" />
+    <Resource Include="Assets\NgauNhien.png" />
+    <Resource Include="Assets\PlayList.png" />
+    <Resource Include="Assets\Qua bài phải.png" />
+    <Resource Include="Assets\Qua bài trái.png" />
+    <Resource Include="Assets\recycle-bin.png" />
+    <Resource Include="Assets\sound-off.png" />
+    <Resource Include="Assets\Thời gian.png" />
+    <Resource Include="Assets\Tìm kiếm.png" />
+    <Resource Include="Assets\VolumeBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\GlassBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataManager\MusicLocation.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 90.png" />
+    <Resource Include="Assets\Group 91.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 82.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Path 1.png" />
+    <Resource Include="Assets\Path 52.png" />
+    <Resource Include="Assets\Remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 93.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 103.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\heart_huy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icon_59-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 113.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 105.png" />
+    <Resource Include="Assets\Group 106.png" />
+    <Resource Include="Assets\Group 108.png" />
+    <Resource Include="Assets\Group 109.png" />
+    <Resource Include="Assets\Group 110.png" />
+    <Resource Include="Assets\Group 111.png" />
+    <Resource Include="Assets\Group 17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Path 54.png" />
+    <Resource Include="Assets\Path 55.png" />
+    <Resource Include="Assets\Path 56.png" />
+    <Resource Include="Assets\Path 57.png" />
+    <Resource Include="Assets\Path 58.png" />
+    <Resource Include="Assets\Path 59.png" />
+    <Resource Include="Assets\Path 60.png" />
+    <Resource Include="Assets\Path 61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\folder icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\FavoriteSongImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_59-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="210.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Artboard 70.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="backindee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\music back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\AddPL.png" />
+    <Resource Include="Assets\Artboard 70.png" />
+    <Resource Include="Assets\background.png" />
+    <Resource Include="Assets\backindee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 114.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 117.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\LIST.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\KaraokeGif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 224.png" />
+    <Resource Include="Assets\Group 231.png" />
+    <Resource Include="Assets\Group 232.png" />
+    <Resource Include="Assets\Group 234.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Group 118.png" />
+    <Resource Include="Assets\Group 122.png" />
+    <Resource Include="Assets\Group 123.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\StaticImgHome.png" />
+    <Resource Include="Assets\home.gif.gif" />
+    <Resource Include="Assets\ezgif.com-gif-maker.gif" />
+    <Resource Include="Assets\gifhome.gif" />
+    <Resource Include="Assets\ezgif.com-gif-maker %281%29.gif" />
+    <Resource Include="Assets\fr0.png" />
+    <Content Include="Assets\KaraokeGify.mp4" />
+    <Resource Include="DataManager\RecentSong.txt" />
+    <Resource Include="Assets\Rectangle 16.png" />
+    <Resource Include="Assets\logo-final.png" />
+    <Content Include="Assets\source.mp4" />
+    <Resource Include="Assets\Path 70.png" />
+    <Resource Include="Assets\Path 129.png" />
+    <Resource Include="Assets\Loading.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+</Project>

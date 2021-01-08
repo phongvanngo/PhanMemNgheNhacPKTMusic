@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="IndeeMusee.Views.ButtonAddPlaylist"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:IndeeMusee.Views"
+             mc:Ignorable="d"
+             d:DesignWidth="150"
+             Height="auto"
+             Margin="0,10,10,10">
+    <Grid HorizontalAlignment="Center"
+          Margin="15,0,0,0"
+          Height="auto"
+          Width="150">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Button Click="Button_Click"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="White"
+                BorderThickness="5"
+                Background="White"
+                Style="{StaticResource TemplateButton}">
+            <Grid>
+                <Image Source="/IndeeMusee;component/Assets/AddPL.png"
+                       Height="150"></Image>
+            </Grid>
+        </Button>
+        <TextBlock Grid.Row="1"
+                   Text="ADD PLAYLIST"
+                   x:Name="TbPlaylistName"
+                   TextWrapping="WrapWithOverflow"
+                   FontFamily="ONE DAY"
+                   FontSize="18"
+                   Foreground="#4D4C7D"
+                   Padding="0 5 0 0"
+                   HorizontalAlignment="Center"></TextBlock>
+    </Grid>
+</UserControl>

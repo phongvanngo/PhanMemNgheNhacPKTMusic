@@ -1,0 +1,241 @@
+﻿<Window x:Class="IndeeMusee.EditForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IndeeMusee"
+        mc:Ignorable="d"
+        Title="EditForm" 
+        Height="310" 
+        Width="500"
+        WindowStyle="None"
+        BorderThickness="0" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Window.Resources>
+        <Style x:Key="btnDelete" TargetType="Button">
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border x:Name="border"
+                                Background="White"
+                                BorderThickness="0">
+                            <TextBox
+                                    IsEnabled="False"
+                                    Background="Transparent" 
+                                    VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"                                    
+                                        BorderThickness="0"
+                                     FontSize="30" RenderTransformOrigin="0.5,0.5" Margin="15,-3,11,3"
+                                     >
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="45"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                                +
+                            </TextBox>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Effect>
+        <DropShadowEffect Opacity="0.5" ShadowDepth="6" BlurRadius="10"/>
+    </Window.Effect>
+    <Grid Background="#4D4C7D" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="#A6B1E1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/Group 103.png" 
+                   Margin="10"/>
+            <Label Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   Content="EDIT SONG INFO"
+                   FontSize="25"
+                   Foreground="White"
+                   FontFamily="ONE DAY"
+                   Padding="0"/>
+        </Grid>
+        <Grid Grid.Row="1"
+              >
+            <Label Content="SONG TITLE"
+                   FontFamily="ONE DAY"
+                   Foreground="White"
+                   FontSize="25"
+                   Width="140"
+                   Height="40" Margin="50,20,310,200"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   
+                   ></Label>
+            <Label Content="GENRE"
+                   FontFamily="ONE DAY"
+                   Foreground="White"
+                   FontSize="25"
+                   Width="90"
+                   Height="40" Margin="269,103,141,117"
+                   HorizontalContentAlignment="Left"
+                   Padding="0,5,0,0"
+                   ></Label>
+            <Label Content="ARTIST"
+                   FontFamily="ONE DAY"
+                   Foreground="White"
+                   FontSize="25"
+                   Height="40" Margin="50,103,358,117"
+                   HorizontalContentAlignment="Left"
+                   Padding="0,5,0,0"
+                   />
+            <Border    x:Name="borderSongTitle"
+                       BorderBrush="Red"
+                       BorderThickness="0"
+                       Width="400"
+                       Height="40"
+                       Background="White"
+                       Margin="50,61,50,159"
+                       MouseEnter="borderSongTitle_MouseEnter"
+                       MouseLeave="borderSongTitle_MouseLeave"
+                  
+                       
+                       >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Background="White"
+                         x:Name="TbSongTitle"
+                         Text="Hết thương cạn nhớ"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         BorderThickness="0"
+                         FontSize="20"
+                         Padding="3"
+                         Opacity="0.5"
+                         Width="350">
+                    </TextBox>
+                    <Button
+                        x:Name="btnSongTitle"
+                        Visibility="Hidden"
+                        Grid.Column="1"
+                        Style="{StaticResource btnDelete}" Click="btnSongTitle_Click"
+                        >
+
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Width="180"
+                       Height="40"
+                       Background="White" Margin="50,140,270,80"
+                        x:Name="borderArtist"
+                       BorderBrush="Red"
+                       BorderThickness="0"
+                        MouseEnter="borderArtist_MouseEnter"
+                    MouseLeave="borderArtist_MouseLeave"
+                       >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Background="White"
+                         x:Name="TbSongArtist"
+                         
+                         Text="Unknown"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         BorderThickness="0"
+                         FontSize="20"
+                         Padding="3"
+                         Opacity="0.5"
+                         Width="130">
+                    </TextBox>
+                    <Button
+                        x:Name="btnArtist"
+                        Click="btnArtist_Click"
+                        Grid.Column="1"
+                        Visibility="Hidden"
+                        Style="{StaticResource btnDelete}">
+                    </Button>
+                </Grid>
+
+            </Border>
+            <Border Width="180"
+                       Height="40"
+                       Background="White" Margin="270,140,50,80"
+                     x:Name="borderGenre"
+                       BorderBrush="Red"
+                       BorderThickness="0"
+                    MouseEnter="borderGenre_MouseEnter"
+                    MouseLeave="borderGenre_MouseLeave">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Background="White"
+                         Text="Nhạc trẻ"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         BorderThickness="0"
+                         FontSize="20"
+                         Padding="3"
+                         Opacity="0.5"
+                         x:Name="TbSongGenre"
+                         Width="130">
+                    </TextBox>
+                    <Button
+                        x:Name="btnGenre"
+                        Click="btnGenre_Click"
+                        Grid.Column="1"
+                        Visibility="Hidden"
+                        Style="{StaticResource btnDelete}">
+                    </Button>
+                </Grid>
+            </Border>
+            <Button Width="95"
+                    x:Name="SaveButton"
+                    Height="35"
+                    Style="{StaticResource Button_MyMusic}"
+                    Margin="240,205,165,20"
+                    Content="SAVE"
+                    Foreground="White"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="20"
+                    Padding="25,5,1,1"
+                    Click="SaveButton_Click">
+
+            </Button>
+            <Button Width="95"
+                    Height="35"
+                    Style="{StaticResource Button_MyMusic}"
+                    Margin="355,205,50,20"
+                    Content="CANCEL"
+                    Foreground="White"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="20"
+                    Padding="13,5,0,0"
+                    Click="Button_Click" />
+        </Grid>
+    </Grid>
+</Window>

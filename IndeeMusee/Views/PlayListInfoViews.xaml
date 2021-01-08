@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="IndeeMusee.Views.PlayListInfoViews"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:IndeeMusee.Views"
+             xmlns:views="clr-namespace:IndeeMusee.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="530"
+             d:DesignWidth="944">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"
+                  Background="White">
+                <Image Grid.Column="0"
+                       x:Name="PlaylistImage"
+                       Source="{Binding PlaylistImage}"
+                       Stretch="Uniform"
+                       Width="auto"
+                       Margin="20"
+                       MouseDown="PlaylistImage_MouseDown" />
+            </Grid>
+            <Grid Grid.Column="1"
+                  Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <!-- chỗ này binding với tên play list-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Label ToolTip="Double click to change name"
+                           
+                           Grid.Row="0"
+                           MouseDoubleClick="Label_MouseDoubleClick"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           FontSize="30"
+                           FontFamily="Montserrat"
+                           Foreground="White"
+                           Padding="0"
+                           Content="{Binding PlaylistName}"
+                           Margin="50,20" />
+                </Grid>
+                <!-- chỗ này binding với số lượng bài hát (X SONGS)-->
+                <Label Grid.Row="1"
+                       Content="{Binding AmountOfSong, StringFormat={}{0} song}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       FontSize="30"
+                       Margin="50,0,0,0"
+                       FontFamily="Montserrat"
+                       Foreground="White"
+                       Padding="1,1,1,1" />
+                <!-- chỗ này binding với tổng thời lượng tất cả bài hát (X MINUTES)-->
+                <Label Grid.Row="1"
+                       Content="{Binding TotalTime}"
+                       Height="37"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       FontSize="30"
+                       Margin="250,0,0,0"
+                       FontFamily="Montserrat"
+                       Foreground="White"
+                       Padding="1,1,1,1" />
+                <Button Grid.Row="2"
+                        FontFamily="ONE DAY"
+                        FontSize="25"
+                        Height="48"
+                        Width="150"
+                        Margin="50,0,0,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Background="Black"
+                        BorderThickness="0"
+                        Command="{Binding PlayAllCommand}"
+                        Style="{StaticResource TemplateButton}">
+                    <Grid Height="48"
+                          Width="150"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3.5*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Play all"
+                               Foreground="White"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Padding="0"
+                               Margin="0" />
+                        <Image Source="/IndeeMusee;component/Assets/btnPlay.png"
+                               x:Name="Img_play"
+                               Height="28"
+                               Width="24"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="0"
+                               Grid.Column="1" />
+                    </Grid>
+                </Button>
+                <Button Grid.Row="2"
+                        Width="185"
+                        FontFamily="ONE DAY"
+                        FontSize="25"
+                        Height="48"
+                        Margin="250,0,0,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Background="Black"
+                        BorderThickness="0"
+                        Command="{Binding AddSongCommand}"
+                        Style="{StaticResource TemplateButton}">
+                    <Grid Width="185"
+                          Height="48"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="1.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Add songs"
+                               Foreground="White"
+                               Grid.Column="0"
+                               VerticalContentAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               
+                                />
+                        <Image Source="/IndeeMusee;component/Assets/ADD.png"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Margin="12"
+                               Grid.Column="1" />
+                    </Grid>
+                </Button>
+                <Button Grid.Row="2"
+                        FontFamily="ONE DAY"
+                        FontSize="25"
+                        Width="140"
+                        Height="48"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="500,0,0,0"
+                        Background="Black"
+                        BorderThickness="0"
+                        Command="{Binding RemovePlaylistCommand}"
+                        Style="{StaticResource TemplateButton}">
+                    <Grid Width="140"
+                          Height="48"
+                          Margin="0,0,5,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2.3*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="DELETE"
+                               Foreground="White"
+                               Grid.Column="0"
+                               HorizontalContentAlignment="Center"
+                               VerticalContentAlignment="Center"
+                               />
+                        <Image Source="/IndeeMusee;component/Assets/recycle-bin.png"
+                               Grid.Column="1"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Margin="10" />
+                    </Grid>
+                </Button>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <views:ListMusicInPlaylist />
+        </Grid>
+    </Grid>
+</UserControl>
+

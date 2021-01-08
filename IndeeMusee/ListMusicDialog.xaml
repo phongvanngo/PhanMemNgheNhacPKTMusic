@@ -1,0 +1,226 @@
+﻿<Window x:Class="IndeeMusee.ListMusicDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IndeeMusee"
+        mc:Ignorable="d"
+         Title=""
+        Height="520"
+        Width="930"
+        x:Name="FormAddPL"
+        Opacity="1"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    <Window.Background>
+        <ImageBrush ImageSource="/IndeeMusee;component/Assets/music back.png" />
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Background="#A6B1E1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="20*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="/IndeeMusee;component/Assets/PlayList.png"
+                   Margin="7"
+                   Stretch="None"
+                   />
+            <Label Grid.Column="1"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Left"
+                   Padding="0,0,0,0"
+                   Foreground="White"
+                   FontSize="28"
+                   FontFamily="ONE DAY"
+                   Content="choose music">
+
+            </Label>
+        </Grid>
+        <!--#region Search Bar-->
+        <Grid Grid.Row="1"
+              Margin="30,0,30,0"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="167*" />
+            </Grid.ColumnDefinitions>
+            <Label BorderThickness="0"
+                   Background="#F0F0F0"
+                   VerticalAlignment="Center"
+                   Margin="0,11.4,0,11.4"
+                   Grid.RowSpan="2">
+                <Image Source="/IndeeMusee;component/Assets/Tìm kiếm.png"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch"
+                       Margin="0" />
+            </Label>
+            <TextBox Grid.Column="1"
+                     FontSize="25"
+                     FontFamily="Montserrat"
+                     BorderThickness="0"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,11.4,0,11.4"
+                     Grid.RowSpan="2">
+                <TextBox.Style>
+                    <Style TargetType="TextBox"
+                           xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush"
+                                         AlignmentX="Left"
+                                         AlignmentY="Center"
+                                         Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label     Width="99999"
+                                               Height="50"
+                                               Content="Search"
+                                               Foreground="#D3D3D3"
+                                               FontSize="25"
+                                               FontFamily="ONE DAY"
+                                               Background="#F0F0F0"
+                                               HorizontalContentAlignment="Left"
+                                               VerticalContentAlignment="Center"
+                                               Padding="10,0,0,0" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text"
+                                     Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background"
+                                        Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text"
+                                     Value="{x:Null}">
+                                <Setter Property="Background"
+                                        Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsSelectionActive"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#F0F0F0" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </Grid>
+        <!--#endregion-->
+        <Grid Grid.Row="2">
+            <ListView BorderThickness="0"
+                      ItemsSource="{Binding ListMusic}"
+                      Margin="30,0,30,0">
+                <ListView.Background>
+                    <SolidColorBrush Color="White" Opacity="0.3">
+
+                    </SolidColorBrush>
+                </ListView.Background>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Height"
+                                Value="35" />
+                        <Setter Property="VerticalAlignment"
+                                Value="Top" />
+                        <Setter Property="BorderThickness"
+                                Value="0" />
+                        <Setter Property="Padding"
+                                Value="0,1" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border x:Name="Mainborder">
+                                        <Border.Background>
+                                            <SolidColorBrush x:Name="background" Color="AliceBlue" Opacity="0.5" />
+                                        </Border.Background>
+
+                                        <Grid Width="auto"
+                                              Height="35">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*" />
+                                                <ColumnDefinition Width="2*" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox 
+                                                      VerticalAlignment="Center"
+                                                      FontSize="20"
+                                                      FontFamily="montserrat"
+                                                      VerticalContentAlignment="Center"
+                                                      Grid.Column="0"
+                                                      Content="{Binding Title}"
+                                                      IsChecked="{Binding IsInPlaylist}"
+                                                      Command="{Binding RelativeSource = {RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=DataContext.CheckToChooseSongCommand}"
+                                                      CommandParameter="{Binding}"
+                                                      HorizontalAlignment="Left"
+                                                      Padding="10,0,0,0"
+                                                      Margin="20,0,0,0"
+                                                
+                                                      Width="446">
+                                               
+                                            </CheckBox>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    TargetName="Mainborder"
+                                                    Value="#B4A6F2"></Setter>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    TargetName="Mainborder"
+                                                    Value="#B4A6F2"></Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Grid>
+        <!--#region Save and Cancel button-->
+        <Grid Grid.Row="3">
+            <Button Width="95"
+                    x:Name="SaveButton"
+                    Height="35"
+                    Style="{StaticResource Button_MyMusic}"
+                    Margin="674,13,161,10"
+                    Content="SAVE"
+                    Foreground="White"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="20"
+                    Padding="25,5,1,1"
+                    Command="{Binding SaveCommand}"
+                    Click="SaveButton_Click">
+
+            </Button>
+            <Button Width="95"
+                    Height="35"
+                    Style="{StaticResource Button_MyMusic}"
+                    Margin="750,0,0,0"
+                    Content="CANCEL"
+                    x:Name="Cancel"
+                    Foreground="White"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="20"
+                    Click="Cancel_Click"
+                    Padding="13,5,0,0" />
+        </Grid>
+        <!--#endregion-->
+    </Grid>
+</Window>
